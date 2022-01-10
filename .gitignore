@@ -1,0 +1,16 @@
+__pycache__
+node_modules
+env/
+node_modules/
+.env
+yarn-error.log
+.vscode*
+cache/
+out/
+lcov.info
+misc/update-weights-encoded.txt
+build/*
+!build/deployments
+build/deployments/*
+!build/deployments/map.json
+!build/deployments/1
