@@ -44,3 +44,5 @@ class Coin:
     name: str
     decimals: int
 
+
+class AssetType:
