@@ -50,3 +50,8 @@ class AssetType:
     ETH = 1
     BTC = 2
     OTHER = 3
+    CRYPTO = 4
+
+
+@dataclass
+class CurvePool:
