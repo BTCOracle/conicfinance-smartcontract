@@ -60,3 +60,14 @@ class CurvePool:
     coins: List[Coin]
 
 
+class DataFetcher:
+    def __init__(self, registry: CurveRegistryCache, oracles: List[interface.IOracle]):
+        self.registry = registry
+        self.oracles = oracles
+        self.curve_pools = self._fetch_curve_pools()
+
+    def _fetch_curve_pools(self) -> List[CurvePool]:
+        return [self._fetch_curve_pool(address) for address in CURVE_POOLS_ADDRESS]
+
+    def _fetch_curve_pool(self, address: str) -> CurvePool:
+        coin_addresses = self.registry.coins(address)
