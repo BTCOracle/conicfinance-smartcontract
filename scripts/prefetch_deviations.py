@@ -79,3 +79,4 @@ class DataFetcher:
 
     def fetch_all_deviations(self, block: int) -> Dict[str, List[D]]:
         result = {}
+        for pool in self.curve_pools:
