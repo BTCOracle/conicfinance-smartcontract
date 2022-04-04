@@ -88,3 +88,15 @@ class DataFetcher:
                 )
         return result
 
+    def fetch_pool_deviations(self, pool: CurvePool, block: int) -> List[D]:
+        prices = self._fetch_prices(pool, block)
+        from_decimals = pool.coins[0].decimals
+        from_balance = 10**from_decimals
+        from_price = prices[0]
+        deviations = []
+        for i in range(1, len(pool.coins)):
+            to_decimals = pool.coins[i].decimals
+            to_price = prices[i]
+            to_expected_unscaled = D(from_balance * from_price) / to_price
+            to_expected = self._convert_scale(
+                to_expected_unscaled, from_decimals, to_decimals
