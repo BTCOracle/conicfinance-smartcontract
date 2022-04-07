@@ -100,3 +100,4 @@ class DataFetcher:
             to_expected_unscaled = D(from_balance * from_price) / to_price
             to_expected = self._convert_scale(
                 to_expected_unscaled, from_decimals, to_decimals
+            )
