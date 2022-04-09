@@ -101,3 +101,6 @@ class DataFetcher:
             to_expected = self._convert_scale(
                 to_expected_unscaled, from_decimals, to_decimals
             )
+            Pool = (
+                interface.ICurvePoolV2
+                if pool.asset_type == AssetType.CRYPTO
