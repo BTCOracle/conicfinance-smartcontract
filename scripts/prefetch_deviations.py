@@ -205,3 +205,4 @@ class AssetType:
 
 
 @dataclass
+class CurvePool:
