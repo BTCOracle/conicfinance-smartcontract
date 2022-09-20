@@ -265,3 +265,7 @@ class DataFetcher:
             )
             deviations.append(deviation_bps)
         return deviations
+
+    @staticmethod
+    def _convert_scale(value: D, from_decimals: int, to_decimals: int) -> D:
+        if from_decimals == to_decimals:
