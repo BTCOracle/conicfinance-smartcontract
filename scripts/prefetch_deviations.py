@@ -297,3 +297,6 @@ def main():
     if path.exists(OUTPUT_FILE):
         with open(OUTPUT_FILE) as f:
             blocks_seen = [json.loads(line)["block"] for line in f]
+    with open(OUTPUT_FILE, "a") as f:
+        for block in range(16_800_000, 17871900, BLOCK_INTERVAL):
+            if block in blocks_seen:
