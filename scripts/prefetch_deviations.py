@@ -349,3 +349,12 @@ class AssetType:
     USD = 0
     ETH = 1
     BTC = 2
+    OTHER = 3
+    CRYPTO = 4
+
+
+@dataclass
+class CurvePool:
+    address: str
+    asset_type: int
+    coins: List[Coin]
