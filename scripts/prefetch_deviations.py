@@ -368,3 +368,5 @@ class DataFetcher:
 
     def _fetch_curve_pools(self) -> List[CurvePool]:
         return [self._fetch_curve_pool(address) for address in CURVE_POOLS_ADDRESS]
+
+    def _fetch_curve_pool(self, address: str) -> CurvePool:
