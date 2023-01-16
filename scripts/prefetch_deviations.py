@@ -370,3 +370,5 @@ class DataFetcher:
         return [self._fetch_curve_pool(address) for address in CURVE_POOLS_ADDRESS]
 
     def _fetch_curve_pool(self, address: str) -> CurvePool:
+        coin_addresses = self.registry.coins(address)
+        decimals = [interface.ERC20(coin).decimals() for coin in coin_addresses]
