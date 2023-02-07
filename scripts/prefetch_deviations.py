@@ -386,3 +386,9 @@ class DataFetcher:
                 logging.error(
                     "Error fetching pool %s at block %s: %s", pool.address, block, e
                 )
+        return result
+
+    def fetch_pool_deviations(self, pool: CurvePool, block: int) -> List[D]:
+        prices = self._fetch_prices(pool, block)
+        from_decimals = pool.coins[0].decimals
+        from_balance = 10**from_decimals
