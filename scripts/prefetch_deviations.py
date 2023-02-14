@@ -392,3 +392,5 @@ class DataFetcher:
         prices = self._fetch_prices(pool, block)
         from_decimals = pool.coins[0].decimals
         from_balance = 10**from_decimals
+        from_price = prices[0]
+        deviations = []
