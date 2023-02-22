@@ -403,3 +403,5 @@ class DataFetcher:
             )
             Pool = (
                 interface.ICurvePoolV2
+                if pool.asset_type == AssetType.CRYPTO
+                else interface.ICurvePoolV1
