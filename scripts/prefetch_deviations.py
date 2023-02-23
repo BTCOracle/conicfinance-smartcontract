@@ -405,3 +405,8 @@ class DataFetcher:
                 interface.ICurvePoolV2
                 if pool.asset_type == AssetType.CRYPTO
                 else interface.ICurvePoolV1
+            )
+            to_actual = D(
+                Pool(pool.address).get_dy(0, i, from_balance, block_identifier=block)
+            )
+            deviation_bps = (
