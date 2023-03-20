@@ -424,3 +424,10 @@ class DataFetcher:
         else:
             return value * D(10 ** (to_decimals - from_decimals))
 
+    def _fetch_prices(self, pool: CurvePool, block: int) -> List[D]:
+        return [self._fetch_price(coin.address, block) for coin in pool.coins]
+
+    def _fetch_price(self, asset: str, block: int) -> D:
+        return D(self.get_oracle(block).getUSDPrice(asset, block_identifier=block))
+
+    def get_oracle(self, block) -> interface.IOracle:
