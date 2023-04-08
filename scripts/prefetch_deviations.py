@@ -451,3 +451,8 @@ def main():
             if block in blocks_seen:
                 continue
             logging.info("Fetching block %s", block)
+            deviations = fetcher.fetch_all_deviations(block)
+            encoded = json.dumps(
+                {"block": block, "deviations": deviations}, cls=DecimalEncoder
+            )
+            f.write(encoded + "\n")
