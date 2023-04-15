@@ -456,3 +456,15 @@ def main():
                 {"block": block, "deviations": deviations}, cls=DecimalEncoder
             )
             f.write(encoded + "\n")
+            f.flush()
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
+
+OUTPUT_FILE = "build/deviations.json"
+NEW_ORACLE_DEPLOYMENT_BLOCK = 17613381
+BLOCK_INTERVAL = 3600 * 3 // 12  # 3 hours in blocks
+
+
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, D):
+            return float(obj.quantize(D(10) ** -5))
