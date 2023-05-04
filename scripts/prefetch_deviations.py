@@ -490,3 +490,8 @@ CURVE_POOLS_ADDRESS = {
 
 
 @dataclass
+class Coin:
+    address: str
+    name: str
+    decimals: int
+
