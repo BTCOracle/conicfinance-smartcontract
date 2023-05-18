@@ -504,3 +504,7 @@ class AssetType:
     CRYPTO = 4
 
 
+@dataclass
+class CurvePool:
+    address: str
+    asset_type: int
