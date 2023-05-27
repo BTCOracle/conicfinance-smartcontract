@@ -517,3 +517,4 @@ class DataFetcher:
         self.oracles = oracles
         self.curve_pools = self._fetch_curve_pools()
 
+    def _fetch_curve_pools(self) -> List[CurvePool]:
