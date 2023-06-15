@@ -534,3 +534,7 @@ class DataFetcher:
             try:
                 result[pool.address] = self.fetch_pool_deviations(pool, block)
             except Exception as e:
+                logging.error(
+                    "Error fetching pool %s at block %s: %s", pool.address, block, e
+                )
+        return result
