@@ -586,3 +586,4 @@ class DataFetcher:
             return self.oracles[1]
         return self.oracles[0]
 
+
