@@ -618,3 +618,6 @@ class DecimalEncoder(json.JSONEncoder):
         if isinstance(obj, D):
             return float(obj.quantize(D(10) ** -5))
         return json.JSONEncoder.default(self, obj)
+
+
+CRV_USD = "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E"
