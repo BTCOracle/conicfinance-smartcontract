@@ -637,3 +637,15 @@ CURVE_POOLS_ADDRESS = {
     "0xaE34574AC03A15cd58A92DC79De7B1A0800F1CE3",
 }
 
+
+@dataclass
+class Coin:
+    address: str
+    name: str
+    decimals: int
+
+
+class AssetType:
+    USD = 0
+    ETH = 1
+    BTC = 2
