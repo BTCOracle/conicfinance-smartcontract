@@ -673,3 +673,10 @@ class DataFetcher:
         coin_addresses = self.registry.coins(address)
         decimals = [interface.ERC20(coin).decimals() for coin in coin_addresses]
         names = [interface.ERC20(coin).name() for coin in coin_addresses]
+        coins = [Coin(*args) for args in zip(coin_addresses, names, decimals)]
+        asset_type = self.registry.assetType(address)
+        return CurvePool(address, asset_type, coins)
+
+    def fetch_all_deviations(self, block: int) -> Dict[str, List[D]]:
+        result = {}
+        for pool in self.curve_pools:
