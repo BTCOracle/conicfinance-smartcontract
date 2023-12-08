@@ -695,3 +695,14 @@ class DataFetcher:
         from_price = prices[0]
         deviations = []
         for i in range(1, len(pool.coins)):
+            to_decimals = pool.coins[i].decimals
+            to_price = prices[i]
+            to_expected_unscaled = D(from_balance * from_price) / to_price
+            to_expected = self._convert_scale(
+                to_expected_unscaled, from_decimals, to_decimals
+            )
+            Pool = (
+                interface.ICurvePoolV2
+                if pool.asset_type == AssetType.CRYPTO
+                else interface.ICurvePoolV1
+            )
