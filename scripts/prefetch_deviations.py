@@ -711,3 +711,6 @@ class DataFetcher:
             )
             deviation_bps = (
                 abs(to_expected - to_actual) / max(to_expected, to_actual) * 10_000
+            )
+            deviations.append(deviation_bps)
+        return deviations
