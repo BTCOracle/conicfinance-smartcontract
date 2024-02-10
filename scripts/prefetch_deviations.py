@@ -759,3 +759,7 @@ def main():
             f.flush()
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(message)s")
 
+OUTPUT_FILE = "build/deviations.json"
+NEW_ORACLE_DEPLOYMENT_BLOCK = 17613381
+BLOCK_INTERVAL = 3600 * 3 // 12  # 3 hours in blocks
+
