@@ -807,3 +807,8 @@ class AssetType:
 @dataclass
 class CurvePool:
     address: str
+    asset_type: int
+    coins: List[Coin]
+
+
+class DataFetcher:
