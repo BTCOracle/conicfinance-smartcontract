@@ -849,3 +849,8 @@ class DataFetcher:
             to_decimals = pool.coins[i].decimals
             to_price = prices[i]
             to_expected_unscaled = D(from_balance * from_price) / to_price
+            to_expected = self._convert_scale(
+                to_expected_unscaled, from_decimals, to_decimals
+            )
+            Pool = (
+                interface.ICurvePoolV2
