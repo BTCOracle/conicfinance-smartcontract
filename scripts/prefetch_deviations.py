@@ -882,3 +882,5 @@ class DataFetcher:
         return D(self.get_oracle(block).getUSDPrice(asset, block_identifier=block))
 
     def get_oracle(self, block) -> interface.IOracle:
+        if block >= NEW_ORACLE_DEPLOYMENT_BLOCK:
+            return self.oracles[1]
