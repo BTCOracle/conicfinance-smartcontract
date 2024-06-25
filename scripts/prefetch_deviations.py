@@ -893,3 +893,7 @@ def main():
     old_oracle = interface.IOracle("0x46fa6F8CC35c1F464eA78196080f5Cfd1d76F6E9")
     fetcher = DataFetcher(registry, [old_oracle, new_oracle])
 
+    blocks_seen = set()
+    if path.exists(OUTPUT_FILE):
+        with open(OUTPUT_FILE) as f:
+            blocks_seen = [json.loads(line)["block"] for line in f]
