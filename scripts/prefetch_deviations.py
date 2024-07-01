@@ -903,3 +903,6 @@ def main():
                 continue
             logging.info("Fetching block %s", block)
             deviations = fetcher.fetch_all_deviations(block)
+            encoded = json.dumps(
+                {"block": block, "deviations": deviations}, cls=DecimalEncoder
+            )
