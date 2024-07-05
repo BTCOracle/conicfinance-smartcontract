@@ -906,3 +906,8 @@ def main():
             encoded = json.dumps(
                 {"block": block, "deviations": deviations}, cls=DecimalEncoder
             )
+            f.write(encoded + "\n")
+            f.flush()
+OUTPUT_FILE = "build/deviations.json"
+NEW_ORACLE_DEPLOYMENT_BLOCK = 17613381
+BLOCK_INTERVAL = 3600 * 3 // 12  # 3 hours in blocks
