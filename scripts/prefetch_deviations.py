@@ -911,3 +911,8 @@ def main():
 OUTPUT_FILE = "build/deviations.json"
 NEW_ORACLE_DEPLOYMENT_BLOCK = 17613381
 BLOCK_INTERVAL = 3600 * 3 // 12  # 3 hours in blocks
+
+
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, D):
