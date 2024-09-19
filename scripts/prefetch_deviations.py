@@ -974,3 +974,6 @@ class DataFetcher:
         decimals = [interface.ERC20(coin).decimals() for coin in coin_addresses]
         names = [interface.ERC20(coin).name() for coin in coin_addresses]
         coins = [Coin(*args) for args in zip(coin_addresses, names, decimals)]
+        asset_type = self.registry.assetType(address)
+        return CurvePool(address, asset_type, coins)
+
