@@ -1010,3 +1010,10 @@ class DataFetcher:
                 Pool(pool.address).get_dy(0, i, from_balance, block_identifier=block)
             )
             deviation_bps = (
+                abs(to_expected - to_actual) / max(to_expected, to_actual) * 10_000
+            )
+            deviations.append(deviation_bps)
+        return deviations
+
+    @staticmethod
+    def _convert_scale(value: D, from_decimals: int, to_decimals: int) -> D:
