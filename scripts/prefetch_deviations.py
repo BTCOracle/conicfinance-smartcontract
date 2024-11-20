@@ -1032,3 +1032,8 @@ class DataFetcher:
 
     def get_oracle(self, block) -> interface.IOracle:
         if block >= NEW_ORACLE_DEPLOYMENT_BLOCK:
+            return self.oracles[1]
+        return self.oracles[0]
+
+
+def main():
