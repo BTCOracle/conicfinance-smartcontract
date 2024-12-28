@@ -1068,3 +1068,9 @@ class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, D):
             return float(obj.quantize(D(10) ** -5))
+        return json.JSONEncoder.default(self, obj)
+
+
+CRV_USD = "0xf939E0A03FB07F59A73314E73794Be0E57ac1b4E"
+CURVE_POOLS_ADDRESS = {
+    "0xA5407eAE9Ba41422680e2e00537571bcC53efBfD",
