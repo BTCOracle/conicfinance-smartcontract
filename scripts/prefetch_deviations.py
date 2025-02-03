@@ -1096,3 +1096,4 @@ class Coin:
     decimals: int
 
 
+class AssetType:
