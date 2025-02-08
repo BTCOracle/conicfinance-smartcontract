@@ -1097,3 +1097,5 @@ class Coin:
 
 
 class AssetType:
+    USD = 0
+    ETH = 1
