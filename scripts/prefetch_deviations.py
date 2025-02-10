@@ -1099,3 +1099,6 @@ class Coin:
 class AssetType:
     USD = 0
     ETH = 1
+    BTC = 2
+    OTHER = 3
+    CRYPTO = 4
