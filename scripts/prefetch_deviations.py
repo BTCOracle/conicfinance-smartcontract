@@ -1102,3 +1102,8 @@ class AssetType:
     BTC = 2
     OTHER = 3
     CRYPTO = 4
+
+
+@dataclass
+class CurvePool:
+    address: str
