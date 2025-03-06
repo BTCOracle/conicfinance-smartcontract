@@ -1107,3 +1107,23 @@ class AssetType:
 @dataclass
 class CurvePool:
     address: str
+    asset_type: int
+    coins: List[Coin]
+
+
+class DataFetcher:
+    def __init__(self, registry: CurveRegistryCache, oracles: List[interface.IOracle]):
+        self.registry = registry
+        self.oracles = oracles
+        self.curve_pools = self._fetch_curve_pools()
+
+    def _fetch_curve_pools(self) -> List[CurvePool]:
+        return [self._fetch_curve_pool(address) for address in CURVE_POOLS_ADDRESS]
+
+    def _fetch_curve_pool(self, address: str) -> CurvePool:
+        coin_addresses = self.registry.coins(address)
+        decimals = [interface.ERC20(coin).decimals() for coin in coin_addresses]
+        names = [interface.ERC20(coin).name() for coin in coin_addresses]
+        coins = [Coin(*args) for args in zip(coin_addresses, names, decimals)]
+        asset_type = self.registry.assetType(address)
+        return CurvePool(address, asset_type, coins)
