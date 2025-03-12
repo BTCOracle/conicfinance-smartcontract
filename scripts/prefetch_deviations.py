@@ -1127,3 +1127,6 @@ class DataFetcher:
         coins = [Coin(*args) for args in zip(coin_addresses, names, decimals)]
         asset_type = self.registry.assetType(address)
         return CurvePool(address, asset_type, coins)
+
+    def fetch_all_deviations(self, block: int) -> Dict[str, List[D]]:
+        result = {}
