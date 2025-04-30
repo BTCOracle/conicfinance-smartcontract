@@ -1166,3 +1166,13 @@ class DataFetcher:
             deviations.append(deviation_bps)
         return deviations
 
+    @staticmethod
+    def _convert_scale(value: D, from_decimals: int, to_decimals: int) -> D:
+        if from_decimals == to_decimals:
+            return value
+        elif from_decimals > to_decimals:
+            return value / D(10 ** (from_decimals - to_decimals))
+        else:
+            return value * D(10 ** (to_decimals - from_decimals))
+
+    def _fetch_prices(self, pool: CurvePool, block: int) -> List[D]:
