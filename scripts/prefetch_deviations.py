@@ -1188,3 +1188,6 @@ class DataFetcher:
 
 
 def main():
+    registry = CurveRegistryCache.at("0x3905A3C1156f67BB55366d7A5a11D1043dcf97c9")
+    new_oracle = interface.IOracle("0x286eF89cD2DA6728FD2cb3e1d1c5766Bcea344b0")
+    old_oracle = interface.IOracle("0x46fa6F8CC35c1F464eA78196080f5Cfd1d76F6E9")
