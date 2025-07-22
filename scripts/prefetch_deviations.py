@@ -1267,3 +1267,5 @@ class DataFetcher:
         self.curve_pools = self._fetch_curve_pools()
 
     def _fetch_curve_pools(self) -> List[CurvePool]:
+        return [self._fetch_curve_pool(address) for address in CURVE_POOLS_ADDRESS]
+
