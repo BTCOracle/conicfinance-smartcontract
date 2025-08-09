@@ -1278,3 +1278,7 @@ class DataFetcher:
         return CurvePool(address, asset_type, coins)
 
     def fetch_all_deviations(self, block: int) -> Dict[str, List[D]]:
+        result = {}
+        for pool in self.curve_pools:
+            try:
+                result[pool.address] = self.fetch_pool_deviations(pool, block)
