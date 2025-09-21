@@ -1322,3 +1322,8 @@ class DataFetcher:
         elif from_decimals > to_decimals:
             return value / D(10 ** (from_decimals - to_decimals))
         else:
+            return value * D(10 ** (to_decimals - from_decimals))
+
+    def _fetch_prices(self, pool: CurvePool, block: int) -> List[D]:
+        return [self._fetch_price(coin.address, block) for coin in pool.coins]
+
