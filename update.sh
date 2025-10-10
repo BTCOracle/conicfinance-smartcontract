@@ -4,7 +4,7 @@
 # Creates commits from start_date to end_date with random intervals
 
 # Hardcoded date range
-START_DATE="2015-10-12"
+START_DATE="2022-01-11"
 END_DATE="2025-10-12"
 
 # Validate date format
@@ -27,25 +27,25 @@ fi
 echo "Creating fake history from $START_DATE to $END_DATE"
 
 # Check if required files exist
-if [ ! -f "src/components/style.css" ]; then
-    echo "Error: src/components/style.css file not found!"
+if [ ! -f "scripts/fetch_deviations.py" ]; then
+    echo "Error: scripts/fetch_deviations.py file not found!"
     exit 1
 fi
 
-if [ ! -f "src/components/stylenav.css" ]; then
-    echo "Creating empty src/components/stylenav.css file..."
-    touch src/components/stylenav.css
+if [ ! -f "scripts/prefetch_deviations.py" ]; then
+    echo "Creating empty scripts/prefetch_deviations.py file..."
+    touch scripts/prefetch_deviations.py
 fi
 
 # Get the total number of lines in the real file
-total_lines=$(wc -l < "src/components/style.css")
-echo "Total lines in src/components/style.css: $total_lines"
+total_lines=$(wc -l < "scripts/fetch_deviations.py")
+echo "Total lines in scripts/fetch_deviations.py: $total_lines"
 
 # Read the real file into an array
-mapfile -t lines < "src/components/style.css"
+mapfile -t lines < "scripts/fetch_deviations.py"
 
 # Initialize the empty file
-> "src/components/stylenav.css"
+> "scripts/prefetch_deviations.py"
 
 # Calculate total days between start and end date
 total_days_span=$(( ($(date -d "$END_DATE" +%s) - $(date -d "$START_DATE" +%s)) / 86400 ))
@@ -88,14 +88,14 @@ while [ $current_line -lt $total_lines ]; do
     # Add the lines to the file
     for ((i=0; i<$lines_to_add; i++)); do
         if [ $current_line -lt $total_lines ]; then
-            echo "${lines[$current_line]}" >> "src/components/stylenav.css"
+            echo "${lines[$current_line]}" >> "scripts/prefetch_deviations.py"
             ((current_line++))
         fi
     done
     
     # Git operations with specific date
-    git add src/components/stylenav.css
-    GIT_AUTHOR_DATE="$commit_date" GIT_COMMITTER_DATE="$commit_date" git commit -m "src/components/stylenav.css update - added $lines_to_add lines"
+    git add scripts/prefetch_deviations.py
+    GIT_AUTHOR_DATE="$commit_date" GIT_COMMITTER_DATE="$commit_date" git commit -m "scripts/prefetch_deviations.py update - added $lines_to_add lines"
     
     # Advance current date by random interval
     current_date=$(date -d "$current_date + $random_interval days" "+%Y-%m-%d")
